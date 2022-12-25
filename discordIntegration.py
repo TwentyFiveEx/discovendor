@@ -55,22 +55,8 @@ async def on_message(message):
 
 ################################ command declarations
 
-@commands.command()
-async def test(ctx,arg):
-    await ctx.channel.send(arg)
-
-class Slapper(commands.Converter):
-    async def convert(self, ctx, argument):
-        to_slap = random.choice(ctx.guild.members)
-        return f'{ctx.author} slapped {to_slap} because *{argument}*'
-
-@bot.command()
-async def slap(ctx, *, reason: Slapper):
-    await ctx.send(reason)
 
 
 ################################ do not alter below this line
-
-bot.add_command(test)
 
 client.run(discordToken)
