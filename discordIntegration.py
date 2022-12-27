@@ -20,7 +20,6 @@ discordToken = tokens[0]
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='$',intents=intents)
 
 ################################ ready message
 
@@ -38,7 +37,7 @@ class MyCog(commands.Cog):
     def cog_unload(self):
         self.printer.cancel()
 
-    @tasks.loop(seconds=5.0)
+    @tasks.loop(seconds=5.0, count=5)
     async def printer(self):
         print(self.index)
         self.index += 1
